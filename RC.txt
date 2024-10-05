@@ -1,0 +1,140 @@
+Abstrato
+1 O que é a dark web
+	definacao
+	como foi criada e porque
+	para que é utilizada
+	Como aceder (TOR)
+	Como funciona o tor
+	principais desafios das LEA's
+	Como apanhar criminosos na dark web(Desanonimizar)
+
+Abstrato:
+	A dark web é ainda vista pela maioria da população como
+uma parte da internet de dificil acesso e propicia à proliferação
+de atividades ilegais, no entanto esta foi criada com o intuito
+de proporcionar segurança e liberdade de expressão
+aos seus utilizadores, através de tecnicas de encriptação e
+roteamento de pacotes entre servidores espalhados pelo mundo.
+	Esta pode ser acedida através de browsers especiais tais
+como o Tor (The Onion Router) ou I2p (The Invisible internet
+project). Dada a quantidade de ilegalidades que estes navegadores
+proporcionam, surge a necessidade de meios capazes de
+desanonimizar certos servidores e/ou utilizadores por parte
+das forças da autoridade.
+
+Introdução:
+	A Internet é mais do que a camada superficial
+conhecida pela sociedade.
+	A camada mais conhecida 
+segundo a fonte [1] a Deep Web é
+4000 a 5000 vezes maior do que a Surface Web
+
+	A Dark Web representa a camada mais obscura da
+internet, é uma rede de dificil acesso que requere 
+o uso de programas especificos como o Tor ou o I2p
+
+	É importante salientar que embora a Dark Web possa
+ser utilizada para a pratica de atividades criminosas, esta
+é maioritariamente usada como meio de liberdade de expressão
+por jornalistas oprimidos por parte dos seus governos ou
+jornalistas que tentam usufruir de direitos fundamentais,
+como a privacidade assim como evitar a recolha de informações
+por parte de estados e corporações que fazem espionagem e
+recolha de dados em massa.
+
+
+Tor:
+	O Tor é uma ferramenta que põe um grande desafio
+às autoridades mundiais uma vez que se trata de um meio
+privado e catalizador de atividades criminosas que torna
+extremamente difícil indentificar e localizar criminosos.
+Ironicamente, este browser foi criado e disponibilizado à
+população pelo governo dos Estados Unidos. Foi criado no
+Laboratório de Pesquisa Naval, pelo matemático Paul Syverson  
+e pelos cientistas de computação Michael G. Reed e David
+Goldschlag, com o objetivo de proteger as comunicações 
+online da inteligência dos EUA.
+	Embora o Tor encripte todo o trafego que passa pelos
+seus nodos, é possivel através de técnicas de snifing 
+(monotorização de pacotes transferidos numa rede) saber quando
+estão a ser transferidas mensagens e até determinar o seu
+comprimento, desta maneira seria facil para um inimigo
+obter um considerável nivel de informações das comunicações
+dos serviços de inteligência através de técnicas de análise
+estatistica de dados. Para evitar este cenário e de
+modo a que o Tor possa realmente proporcionar privacidade
+aos utilizadores é necessário que este seja utilizado pelo
+maior numero de pessoas possível, daí este ter sido lançado
+ao publico pelos Estados Unidos. Isto representa uma faca de
+dois gumes, por um lado o Tor proporciona um meio de
+comunicação seguro e privado para as forças de inteligencia,
+por outro lado proporciona esta mesma privacidade e segurança
+a criminosos e terroristas que usam esta ferramenta para,
+entre outras ilegalidades, planear atos terroristas.
+
+<Madeira algures por aqui>
+
+Como funciona o Tor:
+	O elevado nivel de privacidade do Tor é conseguido
+devido a um conjunto de técnicas de roteamento e criptografia
+que impossibilitam a identificação e localização dos
+utilizadores escondendo os seus endereços ip assim como o conteudo das mensagens
+trocadas.
+	Todos os pacotes enviados pelo Tor são encriptados pelo menos tres vezes
+e passam por uma rede de tres servidores voluntários (relays) e aleatórios
+espalhados pelo mundo antes de chegarem ao destino. O primeiro servidor que
+recebe os dados remove a primeira camada de encriptação, este sabe apenas o ip
+do utilizador e o ip do próximo relay mas não faz ideia do conteudo da mensagem
+nem do seu destino. O segundo relay remove a segunda camada de encriptação e
+não tem qualquer informação sobre o conteudo da mensagem, do ip de destino nem 
+do ip de origem, apenas sabe o ip do próximo nodo (nodo de saída). Por fim o
+ultimo nodo remove a ultima camada de encriptação tendo acesso à mensagem 
+(que pode conter ainda mais camadas de encriptação) e direciona-a para o seu
+destino final. Este ultimo destino nada consegue saber acerca de quem lhe
+enviou a mensagem uma vez que o unico ip que este conhece é o ip do nodo de saída.
+Todo este processo dá-se depois em sentido contrário de modo a fazer passar uma
+resposta de volta ao utilizador, ou seja, a mensagem é passada em sentido 
+contrário em que cada nodo adiciona uma camada de encriptação que depois é
+removida pelo remetente inicial.
+
+
+Tor Hidden Services:
+	Os Hidden Services, ou serviços ocultos, são serviços na rede Tor que 
+fazem uso da mesma técnica de anonimização usada pelos utilizadores para
+protegerem a sua identidade. Isto permite que sites .onion sejam acedidos
+sem revelarem o seu endereço ip.
+	Quando um hidden service é criado este escolhe três routers onion 
+aleatoriamente denominando-os de pontos de introdução fazendo uma conexão de três
+saltos até estes tal como como os utilizadores fazem quando se querem conectar
+a um servidor publico. De seguida o hidden service irá criar um descritor de 
+serviço que contém informação acerca dos ip's dos pontos de introdução e qual
+a chave publica do serviço, utilizada para autenticação. Feito o descritor este
+será então publicado numa hashtable distribuida por toda a rede Tor cuja chave de
+acesso é o endereço .onion do serviço.
+	Quando um utilizador pesquisar pelo endereço no Tor este será utilizado
+para recolher o descritor da hashtable distribuida. O browser escolhe depois um
+ip de um dos pontos de introdução aleatoriamente e faz uma conexão de três saltos
+até este, sendo o último nodo do salto designado por "Rendezvous point" que pede
+ao ponto de introdução escolhido para pedir ao site para estabelecer uma conexão até ao
+rendezvous point, dando-lhe um token encriptado com a chave pública do serviço.
+Se o serviço aceitar o pedido de ligação, irá ligar-se através de uma conexão de três
+saltos ao rendezvous point devolvendo o token, desta vez encriptado com a chave privada
+apenas podendo ser desencriptado com a chave pública provando a identidade do site e 
+finalizando o establecimento de conexão, em que nem o utilizador nem o site sabem o
+ip do outro.
+
+
+
+Analise de trafego:
+por fim temos a analise de trafego, uma tecnica que requer um grande poder 
+computacional assim como uma grande infraestrutura que permita monotorizar 
+os nodos de entrada e de saida. Esta tecnica correlaciona a frequencia de trafego
+que entra nos nodos de entrada com a dos nodos de saida permitindo retirar 
+conclusoes acerca de quem são os remetentes de determinadas mensagens, 
+desanonimizando-os, permite tambem retirar algumas conclusoes acerca do
+conteudo das mensagens através do seu tamanho e frequencia.
+
+	
+
+Fontes:
+	1.Dark Web Paper
